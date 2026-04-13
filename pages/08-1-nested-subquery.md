@@ -30,7 +30,8 @@ WHERE 컬럼A 비교연산자 (
 | 백정태 | 상무 | 20000 |
 | 김낙수 | 부장 | 15000 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT ename_ko AS '이름'
@@ -43,6 +44,8 @@ WHERE sal > (
 );
 ```
 
+</details>
+
 ### 2. emp 테이블에서 중첩 서브쿼리를 사용하여 아래와 같이 부서 평균 급여보다 많이 받는 직원을 조회하는 SQL 쿼리를 작성하시오. (상관 쿼리)
 
 | 이름 | 직급 | 급여 |
@@ -52,7 +55,8 @@ WHERE sal > (
 | 도진우 | 부장 | 12000 |
 | 신준섭 | 차장 | 10000 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT e1.ename_ko AS '이름'
@@ -65,3 +69,5 @@ WHERE e1.sal > (
     WHERE e2.deptno <=> e1.deptno
 );
 ```
+
+</details>

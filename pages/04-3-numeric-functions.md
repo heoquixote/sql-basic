@@ -38,7 +38,8 @@
 | 정성구 [대리] | 6000 | 500 |
 | 이주영 [작업반장] | 6000 | 500 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT CONCAT(ename_ko, ' [', joblv, ']') AS '이름[직급]'
@@ -48,6 +49,8 @@ FROM emp
 WHERE sal >= 6000
 ORDER BY 3 DESC;
 ```
+
+</details>
 
 ### 2. 사원의 성과금을 연봉으로 나누어 보너스 비율을 구하려고 합니다.
 
@@ -68,7 +71,8 @@ ORDER BY 3 DESC;
 | 송익현 | 7000 | 1500 | 21.43% |
 | 권송희 | 4800 | 1000 | 20.83% |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT ename_ko AS '이름'
@@ -79,3 +83,5 @@ FROM emp
 WHERE comm != 0
 ORDER BY 4 DESC;
 ```
+
+</details>

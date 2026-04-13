@@ -55,7 +55,8 @@ LIMIT 개수;
 
 ### 1. `EMP` 테이블에서 급여가 5000 이상인 데이터를 급여가 높은 순으로 3건만 출력하시오.
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT *
@@ -65,11 +66,14 @@ ORDER BY SAL DESC
 LIMIT 3;
 ```
 
+</details>
+
 ### 2. `EMP` 테이블에서 급여가 5000 이상인 데이터를 급여가 높은 순으로 5건만 출력하시오.
 
 (앞의 예제 결과 3건을 건너뛰고 이어서 5건을 출력)
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT *
@@ -77,3 +81,5 @@ FROM EMP
 WHERE SAL >= 5000
 LIMIT 5 OFFSET 3;
 ```
+
+</details>

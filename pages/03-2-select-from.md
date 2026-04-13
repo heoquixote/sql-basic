@@ -47,11 +47,14 @@ SELECT 컬럼명 AS 별칭 FROM 테이블명;
 
 ### 1. 사원 테이블을 조회하시오.
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT * FROM EMP;
 ```
+
+</details>
 
 ### 2. `EMP` 테이블을 조회하여 다음 출력 결과를 만족하는 SQL을 작성하시오.
 
@@ -72,7 +75,8 @@ SELECT * FROM EMP;
 | 7010 | 채소연 | 사원 |
 | 8001 | 이주영 | 작업반장 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT empno AS `사원번호`
@@ -80,6 +84,8 @@ SELECT empno AS `사원번호`
      , joblv AS `직급`
 FROM EMP;
 ```
+
+</details>
 
 ### 3. `EMP` 테이블에서 **중복을 제외한** 직급 목록을 출력하시오.
 
@@ -94,9 +100,12 @@ FROM EMP;
 | 사원 |
 | 작업반장 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT DISTINCT joblv
 FROM EMP;
 ```
+
+</details>

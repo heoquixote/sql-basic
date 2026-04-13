@@ -40,12 +40,15 @@
 | 채소연 [사원] |
 | 이주영 [작업반장] |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT CONCAT(ename_ko, ' [', joblv, ']') AS '이름 [직급]'
 FROM emp;
 ```
+
+</details>
 
 ### 2. `EMP` 테이블에서 이름 글자수 별 카운트를 출력하시오.
 
@@ -54,7 +57,8 @@ FROM emp;
 | 3 | 13 |
 | 4 | 1 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT CHAR_LENGTH(ename_ko) AS '이름길이'
@@ -62,6 +66,8 @@ SELECT CHAR_LENGTH(ename_ko) AS '이름길이'
 FROM emp
 GROUP BY 이름길이;
 ```
+
+</details>
 
 ### 3. `EMP` 테이블에서 이름의 마지막 글자가 `수`로 끝나는 사원정보를 아래와 같이 출력하는 SQL을 작성하시오.
 
@@ -72,7 +78,8 @@ GROUP BY 이름길이;
 | 남궁민수 | NAMGUNG MINSU |
 | 김낙수 | KIM NAKSU |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT ename_ko AS '이름'
@@ -80,6 +87,8 @@ SELECT ename_ko AS '이름'
 FROM emp
 WHERE RIGHT(ename_ko, 1) = '수';
 ```
+
+</details>
 
 ### 4. `EMP` 테이블에서 이름이 김낙수인 사원정보를 `REPLACE` 함수를 활용하여 아래와 같이 바꾸는 SQL 쿼리를 작성하시오.
 
@@ -89,7 +98,8 @@ WHERE RIGHT(ename_ko, 1) = '수';
 
 ![문자열 함수 예시](../assets/04-2/04-2-string-function-example.png)
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT ename_ko AS '이름'
@@ -98,6 +108,8 @@ SELECT ename_ko AS '이름'
 FROM emp
 WHERE ename_ko = '김낙수';
 ```
+
+</details>
 
 ### 5. 이름을 익명 처리 후 연봉과 성과금 관련된 정보를 전달해달라는 요청을 받았습니다.
 
@@ -122,7 +134,8 @@ WHERE ename_ko = '김낙수';
 | 사원 | 채** | 4500 | 1000 |
 | 작업반장 | 이** | 6000 | 2000 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT joblv AS '직급'
@@ -131,3 +144,5 @@ SELECT joblv AS '직급'
      , comm AS '성과금'
 FROM emp;
 ```
+
+</details>

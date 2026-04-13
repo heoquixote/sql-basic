@@ -33,7 +33,8 @@ FROM 테이블;
 | 7010 | 채소연 | 12 | ACT 영업2팀 |
 | 8001 | 이주영 | 40 | ACT 아산공장 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT empno AS '사번'
@@ -44,6 +45,8 @@ SELECT empno AS '사번'
         WHERE b.deptno = a.deptno) AS '부서명'
 FROM emp a;
 ```
+
+</details>
 
 ### 2. **스칼라 서브쿼리를 사용**하여 데이터 조인 없이 아래와 같이 데이터를 출력하시오.
 
@@ -64,7 +67,8 @@ FROM emp a;
 | 7010 | 채소연 | 4500 | 12 | ACT 영업2팀 | 8000 |
 | 8001 | 이주영 | 6000 | 40 | ACT 아산공장 | 6000 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT e.empno AS '사번'
@@ -79,3 +83,5 @@ SELECT e.empno AS '사번'
         WHERE deptno = e.deptno) AS '부서평균급여'
 FROM emp e;
 ```
+
+</details>

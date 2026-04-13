@@ -32,7 +32,8 @@
 | 채소연 | 5,500만원 |
 | 남궁민수 | 5,000만원 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT ename_ko AS '이름'
@@ -50,15 +51,20 @@ WHERE employed = 1
 ORDER BY sal + comm DESC;
 ```
 
+</details>
+
 ### 2. 현재 MySQL 서버의 시간은 UTC(+00:00) 기준으로 설정되어 있다. 동일한 시간을 **한국 시간(KST, +09:00)** 으로 변환하여 아래와 같이 두 개의 값을 한 번에 함께 출력하는 SQL문을 작성하시오.
 
 | utc_time | kst_time |
 | --- | --- |
 | 12/8/25 3:08 | 12/8/25 12:08 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT NOW() AS 'utc_time'
      , CONVERT_TZ(NOW(), '+00:00', '+09:00') AS 'kst_time';
 ```
+
+</details>

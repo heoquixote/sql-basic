@@ -26,10 +26,13 @@
 | 7010 | 7003 |
 | 8001 | 8001 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT empno AS '사원번호'
      , IFNULL(mgr, empno) AS '매니저사번'
 FROM emp;
 ```
+
+</details>

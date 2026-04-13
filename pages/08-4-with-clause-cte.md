@@ -57,7 +57,8 @@ FROM cte_name;
 | 7010 | 채소연 | 5500 | ACT 영업2팀 |
 | 8001 | 이주영 | 8000 | ACT 아산공장 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 WITH emp_base AS (
@@ -76,6 +77,8 @@ JOIN dept d
   ON e.deptno = d.deptno;
 ```
 
+</details>
+
 ### 2. CTE를 사용하여 **부서별 급여 순위**를 먼저 계산한 뒤, 아래와 같이 각 부서별 1등에 해당하는 데이터만 출력하는 SQL 쿼리를 작성하시오.
 
 | 사원번호 | 이름 | 부서번호 | 급여 |
@@ -87,7 +90,8 @@ JOIN dept d
 | 8001 | 이주영 | 40 | 6000 |
 | 4001 | 최재혁 | 80 | 13000 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 WITH ranked_emp AS (
@@ -105,3 +109,5 @@ SELECT empno AS '사원번호'
 FROM ranked_emp
 WHERE dept_rank = 1;
 ```
+
+</details>

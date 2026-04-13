@@ -97,7 +97,8 @@ JOIN emp e2
 | 권송희 | 11 | ACT 영업1팀 |
 | 채소연 | 12 | ACT 영업2팀 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT a.ename_ko AS '이름'
@@ -110,6 +111,8 @@ WHERE a.hiredate >= STR_TO_DATE('2022-01-01', '%Y-%m-%d')
   AND a.hiredate < STR_TO_DATE('2022-04-01', '%Y-%m-%d');
 ```
 
+</details>
+
 ### 2. 연봉이 6000만원인 사원의 직급, 부서명, 지역을 출력하는 SQL 쿼리문을 작성하시오.
 
 | 직급 | 부서명 | 지역 |
@@ -117,7 +120,8 @@ WHERE a.hiredate >= STR_TO_DATE('2022-01-01', '%Y-%m-%d')
 | 대리 | ACT 영업1팀 | 서울 |
 | 작업반장 | ACT 아산공장 | 아산 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT a.joblv AS '직급'
@@ -129,6 +133,8 @@ JOIN dept b
 WHERE a.sal = 6000;
 ```
 
+</details>
+
 ### 3. 지역별 평균급여를 구하는 SQL 쿼리문을 작성하시오.
 
 (평균급여는 소수점 0자리로 반올림해주세요)
@@ -138,7 +144,8 @@ WHERE a.sal = 6000;
 | 서울 | 9233 |
 | 아산 | 6000 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT b.location AS '지역'
@@ -148,6 +155,8 @@ JOIN dept b
   ON a.deptno = b.deptno
 GROUP BY b.location;
 ```
+
+</details>
 
 ### 4. 사원의 이름 및 사원 번호를 관리자의 이름 및 관리자 번호와 함께 표시하고 각각의 컬럼 이름을 사원번호, 사원명, 매니저번호, 매니저명을 출력해주세요.
 
@@ -166,7 +175,8 @@ GROUP BY b.location;
 | 7009 | 권송희 | 7002 | 김낙수 |
 | 7010 | 채소연 | 7003 | 도진우 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT e1.empno AS '사원번호'
@@ -177,6 +187,8 @@ FROM emp e1
 JOIN emp e2
   ON e1.mgr = e2.empno;
 ```
+
+</details>
 
 ### 5. 아래와 같이 사원별 총급여(연봉 + 성과금)를 기준으로 부서명과 급여등급을 함께 조회하는 SQL 쿼리를 작성하시오. (*LEFT 조인 사용)
 
@@ -197,7 +209,8 @@ JOIN emp e2
 | 4001 | 최재혁 | 18000 | 80 | ACT 인사팀 | C |
 | 4002 | 남궁민수 | 5000 | 80 | ACT 인사팀 | E |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT a.empno AS '사원번호'
@@ -228,3 +241,5 @@ LEFT JOIN salgrade c
  AND a.sal + a.comm <= c.hisal
 ORDER BY 3 DESC;
 ```
+
+</details>

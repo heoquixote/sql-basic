@@ -53,7 +53,8 @@ SELECT 컬럼들 FROM 테이블2;
 | 7008 | 이명헌 | 12 |
 | 7010 | 채소연 | 12 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT empno, ename_ko, deptno
@@ -64,6 +65,8 @@ SELECT empno, ename_ko, deptno
 FROM emp
 WHERE deptno = 12;
 ```
+
+</details>
 
 ### 2. 아래와 같이 재직 중인 직원 목록을 조회한 테이블과 퇴사한 직원을 조회한 테이블을 `UNION`으로 결합하시오.
 
@@ -86,7 +89,8 @@ WHERE deptno = 12;
 | 8001 | 이주영 | 재직중 |
 | 7005 | 허태환 | 퇴사 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT empno AS '사번'
@@ -101,3 +105,5 @@ SELECT empno AS '사번'
 FROM emp
 WHERE employed = 0;
 ```
+
+</details>

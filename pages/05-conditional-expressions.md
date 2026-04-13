@@ -40,13 +40,16 @@ END
 | 채소연 | 재직중 |
 | 이주영 | 재직중 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT ename_ko AS '이름'
      , IF(employed = 1, '재직중', '퇴사') AS '재직여부'
 FROM emp;
 ```
+
+</details>
 
 ### 2. 부서 번호를 참고하여 아래 기준에 따라 직군을 분류하는 SQL 쿼리를 작성하시오. (`CASE`문 사용)
 
@@ -74,7 +77,8 @@ FROM emp;
 | 채소연 | 영업 |
 | 이주영 | 생산 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT ename_ko
@@ -86,3 +90,5 @@ SELECT ename_ko
        END AS '직군'
 FROM emp;
 ```
+
+</details>

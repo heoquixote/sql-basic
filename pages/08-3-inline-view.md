@@ -41,7 +41,8 @@ FROM (
 | 7010 | 채소연 | ACT 영업2팀 |
 | 8001 | 이주영 | ACT 아산공장 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT x.empno AS '사번'
@@ -58,6 +59,8 @@ LEFT JOIN dept d
   ON x.deptno = d.deptno;
 ```
 
+</details>
+
 ### 2. 부서별 급여 1등만 출력하는 서브쿼리를 **윈도우 함수와 인라인 뷰** 활용하여 아래와 같이 데이터를 출력하시오.
 
 | 사번 | 이름 | 급여 | 부서별급여순위 |
@@ -69,7 +72,8 @@ LEFT JOIN dept d
 | 8001 | 이주영 | 6000 | 1 |
 | 4001 | 최재혁 | 13000 | 1 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT empno AS '사번'
@@ -85,3 +89,5 @@ FROM (
 ) AS ranked_emp
 WHERE dept_rank = 1;
 ```
+
+</details>

@@ -47,7 +47,8 @@
 | 13 | 권송희 | 4800 |
 | 14 | 채소연 | 4500 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT ROW_NUMBER() OVER (ORDER BY sal DESC) AS '급여순번'
@@ -55,6 +56,8 @@ SELECT ROW_NUMBER() OVER (ORDER BY sal DESC) AS '급여순번'
      , sal AS '급여'
 FROM emp;
 ```
+
+</details>
 
 ### 2. 각 직급별 급여 순위를 출력하려고 합니다.
 
@@ -77,7 +80,8 @@ FROM emp;
 | 사원 | 채소연 | 4500 | 2 |
 | 작업반장 | 이주영 | 6000 | 1 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT joblv AS '직급'
@@ -86,6 +90,8 @@ SELECT joblv AS '직급'
      , DENSE_RANK() OVER (PARTITION BY joblv ORDER BY sal DESC) AS '순위'
 FROM emp;
 ```
+
+</details>
 
 ### 3. 부서별 입사일 기준 누적 평균 급여를 조회하려고 합니다. 아래와 같이 SQL문을 출력하시오.
 
@@ -106,7 +112,8 @@ FROM emp;
 | 80 | 최재혁 | 2003-08-19 | 13000 | 13000 |
 | 80 | 남궁민수 | 2021-07-08 | 5000 | 9000 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT deptno AS '부서번호'
@@ -117,6 +124,8 @@ SELECT deptno AS '부서번호'
 FROM emp
 ORDER BY 1, 3 ASC;
 ```
+
+</details>
 
 ### 4. 아래와 같이 입사일이 빠른 순서대로 각 직원의 급여와 이전 직원의 급여, 다음 직원의 급여를 함께 출력하는 SQL문을 작성해주세요.
 
@@ -137,7 +146,8 @@ ORDER BY 1, 3 ASC;
 | 13 | 권송희 | 4800 | 5000 | 4500 |
 | 14 | 채소연 | 4500 | 4800 |  |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT ROW_NUMBER() OVER (ORDER BY hiredate ASC) AS '순번'
@@ -147,3 +157,5 @@ SELECT ROW_NUMBER() OVER (ORDER BY hiredate ASC) AS '순번'
      , LEAD(sal) OVER (ORDER BY hiredate ASC) AS '다음급여'
 FROM emp;
 ```
+
+</details>

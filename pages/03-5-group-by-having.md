@@ -41,13 +41,16 @@ HAVING 그룹조건;
 
 ### 1. 각 부서별 인원 수를 계산해주세요.
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT deptno, COUNT(*) AS 인원수
 FROM employees
 GROUP BY deptno;
 ```
+
+</details>
 
 ### 2. 평균 급여가 7000 이상인 직급만 조회하세요.
 
@@ -59,7 +62,8 @@ GROUP BY deptno;
 | 차장 | 10,000 |
 | 과장 | 7,500 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT joblv, AVG(salary) AS 평균급여
@@ -67,6 +71,8 @@ FROM employees
 GROUP BY joblv
 HAVING AVG(salary) >= 7000;
 ```
+
+</details>
 
 ### 3. 부서별 최고 급여액, 최저 급여액, 평균 급여액을 구해주세요.
 
@@ -79,7 +85,8 @@ HAVING AVG(salary) >= 7000;
 | 12 | 12000 | 4500 | 8000 |
 | 40 | 6000 | 6000 | 6000 |
 
-- 정답
+<details>
+<summary>정답 보기</summary>
 
 ```sql
 SELECT deptno AS '부서번호'
@@ -89,3 +96,5 @@ SELECT deptno AS '부서번호'
 FROM emp
 GROUP BY deptno;
 ```
+
+</details>
