@@ -1,5 +1,3 @@
-# 3-4. 데이터 정렬, 범위 제한 (ORDER BY, LIMIT)
-
 ## 1. ORDER BY 개념 정의
 
 - `ORDER BY`는 **조회된 데이터를 "정렬(Sort)"하는 절**입니다.

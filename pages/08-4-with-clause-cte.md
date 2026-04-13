@@ -1,5 +1,3 @@
-# 8-4. With절 (Common Table Expression, CTE)
-
 ## 1. WITH 절(CTE)이란?
 
 - 서브쿼리에 이름(별칭)을 붙여서 임시 테이블처럼 사용하는 문법

@@ -1,5 +1,3 @@
-# 3-3. 데이터 필터링 (WHERE)
-
 ## 1. 개념 정의
 
 ![WHERE 개념 예시](../assets/03-3/03-3-where-example.png)

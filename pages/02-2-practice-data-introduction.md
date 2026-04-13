@@ -1,12 +1,10 @@
-# 2-2. 실습 데이터 소개
-
 ## 1. 데이터 알아보기
 
 ![실습 데이터 소개](../assets/02-2/02-2-data-overview.png)
 
 - 실습 테이블 ERD
 
-![실습 테이블 ERD](../assets/02-2/02-2-erd.png)
+![실습 테이블 ERD](../assets/02-2/02-2-salgrade-erd.png)
 
 ### 1. `emp` 테이블 (14행 * 10열)
 
@@ -31,11 +29,23 @@
 | 2 | dname | 부서명 | varchar | 부서의 명칭 (예: ACT 영업본부, ACT 영업1팀 등). |
 | 3 | location | 위치 | varchar | 부서의 근무 지역 또는 사업장 위치 (예: 서울, 아산). |
 
+### 3. `salgrade` 테이블 (5행 * 3열)
+
+- `salgrade`는 급여 구간 매핑용 테이블입니다.
+- FK로 직접 연결되기보다는, 조회 시 `총급여(sal + comm)` 기준으로 조건 조인하여 활용합니다.
+
+| **순번** | **컬럼명** | **논리명** | **데이터 타입** | **설명** |
+| --- | --- | --- | --- | --- |
+| 1 | grade | 급여 등급 | varchar | 급여 구간을 나타내는 등급 코드. A~E 등급으로 구성되며, 급여 수준을 단순화하여 분류하는 기준 값. 기본키(PK)로 사용됨. |
+| 2 | losal | 최소 급여 | integer | 해당 급여 등급에 포함되는 **최소 총급여 기준값**. `sal + comm` 기준으로 등급 매핑 시 하한값 역할. |
+| 3 | hisal | 최대 급여 | integer | 해당 급여 등급에 포함되는 **최대 총급여 기준값**. `sal + comm` 기준으로 등급 매핑 시 상한값 역할. |
+
 ## 2. 데이터를 넣어봅시다
 
-첨부된 **DDL 스크립트**를 실행해주면 됩니다.
+첨부된 **DDL 스크립트**를 실행해주면 됩니다.  
+이 문서는 `emp`, `dept`, `salgrade`까지 포함된 통합 실습 기준으로 설명하므로 아래 스크립트를 사용합니다.
 
-[DDL.sql](../examples/DDL.sql)
+[DDL2.sql](../examples/DDL2.sql)
 
 ### 1. 데이터베이스 만들기
 
@@ -87,7 +97,20 @@ CREATE TABLE basic_sql.dept (
 );
 ```
 
-### 4. `emp` 테이블 데이터 적재
+### 4. `salgrade` 테이블 만들기
+
+```sql
+-- salgrade 테이블이 이미 존재하면 먼저 삭제 (재실행 시 오류 방지 및 초기화 목적)
+DROP TABLE IF EXISTS salgrade;
+
+-- 등급 정보를 저장하는 salgrade 테이블 생성
+CREATE TABLE basic_sql.salgrade
+       (grade VARCHAR(5),
+        losal INT,
+        hisal INT);
+```
+
+### 5. `emp` 테이블 데이터 적재
 
 ```sql
 -- emp 테이블에 기존 데이터가 있으면 모두 삭제 (초기화)
@@ -113,7 +136,7 @@ VALUES
 (8001, '이주영', 'Lee Juyoung', '작업반장', NULL, '2015-04-03', 6000, 2000, 40, TRUE);
 ```
 
-### 5. `dept` 테이블 데이터 적재
+### 6. `dept` 테이블 데이터 적재
 
 ```sql
 -- dept 테이블에 기존 데이터가 있으면 모두 삭제 (초기화)
@@ -128,59 +151,7 @@ INSERT INTO dept (deptno, dname, location) VALUES
   (80, 'ACT 인사팀', '서울');
 ```
 
-### 6. 조회해서 적재 확인하기
-
-새 SQL 스크립트를 열고 아래 코드를 쳐서 데이터가 잘 나오면 적재 완료입니다.
-
-```sql
-SELECT * FROM basic_sql.emp;
-```
-
-![emp 조회 결과](../assets/02-2/02-2-emp-result.png)
-
-```sql
-SELECT * FROM basic_sql.dept;
-```
-
-![dept 조회 결과](../assets/02-2/02-2-dept-result.png)
-
-## 1-1. 추가 데이터 소개
-
-- 실습 테이블 ERD
-
-![추가 실습 테이블 ERD](../assets/02-2/02-2-salgrade-erd.png)
-
-- `salgrade`는 급여 구간 매핑용 테이블
-- FK로 직접 연결되기보다는, 조회 시 `총급여(sal + comm)` 기준으로 조건 조인하여 활용
-
-### 1. `salgrade` 테이블 (5행 * 3열)
-
-| **순번** | **컬럼명** | **논리명** | **데이터 타입** | **설명** |
-| --- | --- | --- | --- | --- |
-| 1 | grade | 급여 등급 | varchar | 급여 구간을 나타내는 등급 코드. A~E 등급으로 구성되며, 급여 수준을 단순화하여 분류하는 기준 값. 기본키(PK)로 사용됨. |
-| 2 | losal | 최소 급여 | integer | 해당 급여 등급에 포함되는 **최소 총급여 기준값**. `sal + comm` 기준으로 등급 매핑 시 하한값 역할. |
-| 3 | hisal | 최대 급여 | integer | 해당 급여 등급에 포함되는 **최대 총급여 기준값**. `sal + comm` 기준으로 등급 매핑 시 상한값 역할. |
-
-## 1-2. 데이터 추가하기
-
-첨부된 **DDL 스크립트**를 실행해주면 됩니다.
-
-[DDL2.sql](../examples/DDL2.sql)
-
-### 1. `salgrade` 테이블 만들기
-
-```sql
--- salgrade 테이블이 이미 존재하면 먼저 삭제 (재실행 시 오류 방지 및 초기화 목적)
-DROP TABLE IF EXISTS salgrade;
-
--- 등급 정보를 저장하는 salgrade 테이블 생성
-CREATE TABLE basic_sql.salgrade
-       (grade VARCHAR(5),
-        losal INT,
-        hisal INT);
-```
-
-### 2. `salgrade` 테이블 데이터 적재
+### 7. `salgrade` 테이블 데이터 적재
 
 ```sql
 -- salgrade 테이블에 기존 데이터가 있으면 모두 삭제 (초기화)
@@ -195,9 +166,21 @@ INSERT INTO salgrade (grade, losal, hisal) VALUES
   ('A', 30001, 99999);
 ```
 
-### 3. 조회해서 적재 확인하기
+### 8. 조회해서 적재 확인하기
 
 새 SQL 스크립트를 열고 아래 코드를 쳐서 데이터가 잘 나오면 적재 완료입니다.
+
+```sql
+SELECT * FROM basic_sql.emp;
+```
+
+![emp 조회 결과](../assets/02-2/02-2-emp-result.png)
+
+```sql
+SELECT * FROM basic_sql.dept;
+```
+
+![dept 조회 결과](../assets/02-2/02-2-dept-result.png)
 
 ```sql
 SELECT * FROM basic_sql.salgrade;
