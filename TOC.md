@@ -1,5 +1,6 @@
 # 목차
 
+* [00. 저장소 사용 방법](pages/01-getting-started.md)
 * [01. SQL 사고방식과 실행 순서](pages/01-sql-thinking-and-execution-order.md)
   * SQL은 왜 읽는 순서와 실행 순서가 다른가
   * FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY
