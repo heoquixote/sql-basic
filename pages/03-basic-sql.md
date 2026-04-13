@@ -8,8 +8,8 @@ SQL의 가장 기본이 되는 조회 문법을 다루는 챕터입니다.
 
 ## 세부 목차
 
-- 03-1. SQL 쿼리 작성 순서
-- 03-2. 데이터 조회 (SELECT ~ FROM)
-- 03-3. 데이터 필터링 (WHERE)
-- 03-4. 데이터 정렬, 범위 제한 (ORDER BY, LIMIT)
-- 03-5. 데이터 그룹화, 그룹 조건 (GROUP BY, HAVING)
+- 3-1. SQL 쿼리 작성 순서
+- 3-2. 데이터 조회 (SELECT ~ FROM)
+- 3-3. 데이터 필터링 (WHERE)
+- 3-4. 데이터 정렬, 범위 제한 (ORDER BY, LIMIT)
+- 3-5. 데이터 그룹화, 그룹 조건 (GROUP BY, HAVING)

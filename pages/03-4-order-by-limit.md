@@ -1,24 +1,81 @@
-## 학습 목표
+# 3-4. 데이터 정렬, 범위 제한 (ORDER BY, LIMIT)
 
-- 데이터를 원하는 기준으로 정렬할 수 있습니다.
-- 조회 결과의 개수를 제한할 수 있습니다.
+## 1. ORDER BY 개념 정의
 
-## 목차
+- `ORDER BY`는 **조회된 데이터를 "정렬(Sort)"하는 절**입니다.
+- 숫자, 문자열, 날짜를 기준으로 **오름차순 또는 내림차순 정렬 가능**합니다.
+- **SELECT 결과의 "보는 순서"만 바꾸는 기능**이며, 데이터 자체는 변경되지 않습니다.
 
-1. ORDER BY
-2. LIMIT
-3. 함께 사용하는 패턴
+## 2. ORDER BY 기본 문법 구조
 
-## 1. ORDER BY
+```sql
+SELECT 컬럼명
+FROM 테이블명
+ORDER BY 컬럼명 [ASC | DESC];
+```
 
-`ORDER BY`는 결과를 특정 컬럼 기준으로 정렬하는 절입니다.
-오름차순은 `ASC`, 내림차순은 `DESC`를 사용합니다.
+- `ASC`: 오름차순 (기본값, 생략 가능)
+- `DESC`: 내림차순
 
-## 2. LIMIT
+> ❗ **ORDER BY에서 알리아스 사용 가능**
+>
+> ```sql
+> SELECT salary * 12 AS annual_salary
+> FROM employees
+> ORDER BY annual_salary DESC;
+> ```
+>
+> - `SELECT`에서 만든 **알리아스는 ORDER BY에서 사용 가능**
+> - `WHERE`에서는 사용 불가
 
-`LIMIT`은 조회 결과 중 상위 일부만 남길 때 사용합니다.
+## 3. LIMIT 개념 정의
 
-## 3. 함께 사용하는 패턴
+- `LIMIT`는 **조회되는 데이터의 "행 개수"를 제한하는 절**입니다.
+- 상위 N개 데이터 조회, 페이징 처리에 사용합니다.
+- **MySQL에서 TOP 역할을 대신하는 구문**입니다.
 
-실무에서는 `ORDER BY` 없이 `LIMIT`만 쓰면 어떤 행이 잘리는지 불명확할 수 있으므로,
-보통은 정렬 기준과 함께 사용하는 편이 안전합니다.
+## 4. LIMIT 기본 문법 구조
+
+```sql
+SELECT 컬럼명
+FROM 테이블명
+LIMIT 개수;
+```
+
+> ❗ **LIMIT + OFFSET (페이징 처리)**
+>
+> ```sql
+> SELECT *
+> FROM employees
+> ORDER BY empno
+> LIMIT 5 OFFSET 5;
+> ```
+>
+> → **6번째부터 5개 행 조회**
+
+## 5. 문제 풀이
+
+### 1. `EMP` 테이블에서 급여가 5000 이상인 데이터를 급여가 높은 순으로 3건만 출력하시오.
+
+- 정답
+
+```sql
+SELECT *
+FROM EMP
+WHERE SAL >= 5000
+ORDER BY SAL DESC
+LIMIT 3;
+```
+
+### 2. `EMP` 테이블에서 급여가 5000 이상인 데이터를 급여가 높은 순으로 5건만 출력하시오.
+
+(앞의 예제 결과 3건을 건너뛰고 이어서 5건을 출력)
+
+- 정답
+
+```sql
+SELECT *
+FROM EMP
+WHERE SAL >= 5000
+LIMIT 5 OFFSET 3;
+```
