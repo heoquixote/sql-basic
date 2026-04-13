@@ -142,7 +142,7 @@ WHERE COMM IS NOT NULL;
 
 ## 9. 문제 풀이
 
-### 1. `EMP` 테이블에서 직급(`joblv`)이 `차장`인 사원정보를 출력하시오.
+**1. `EMP` 테이블에서 직급(`joblv`)이 `차장`인 사원정보를 출력하시오.**
 
 <details>
 <summary>정답 보기</summary>
@@ -155,7 +155,7 @@ WHERE joblv = '차장';
 
 </details>
 
-### 2. `EMP` 테이블에서 부서번호가 11번이 아닌 사원정보를 출력하시오.
+**2. `EMP` 테이블에서 부서번호가 11번이 아닌 사원정보를 출력하시오.**
 
 <details>
 <summary>정답 보기</summary>
@@ -174,7 +174,7 @@ WHERE deptno <> 11;
 
 </details>
 
-### 3. `EMP` 테이블에서 부서번호가 11인 사원 중에 직급이 과장 또는 대리인 사원정보를 출력하시오.
+**3. `EMP` 테이블에서 부서번호가 11인 사원 중에 직급이 과장 또는 대리인 사원정보를 출력하시오.**
 
 <details>
 <summary>정답 보기</summary>
@@ -195,7 +195,7 @@ WHERE deptno = 11
 
 </details>
 
-### 4. `EMP` 테이블에서 성과급이 없는 사원정보를 출력하시오.
+**4. `EMP` 테이블에서 성과급이 없는 사원정보를 출력하시오.**
 
 <details>
 <summary>정답 보기</summary>
@@ -208,7 +208,7 @@ WHERE COMM IS NULL;
 
 </details>
 
-### 5. `EMP` 테이블에서 이름의 두 번째 글자에 `정`이 들어가는 사원 정보를 출력하시오.
+**5. `EMP` 테이블에서 이름의 두 번째 글자에 `정`이 들어가는 사원 정보를 출력하시오.**
 
 <details>
 <summary>정답 보기</summary>
